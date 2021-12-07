@@ -1,8 +1,11 @@
 import { NextPage } from "next";
 import { useState } from "react"
+import { text } from "stream/consumers";
 import { executeRequest } from "../services/api";
 import { LoginRequest } from "../types/LoginRequest";
 import { LoginResponse } from "../types/LoginResponse";
+import { sensitiveHeaders } from "http2";
+
 
 type LoginProps = {
     setToken(s: string) : void
@@ -59,8 +62,9 @@ export const Login : NextPage<LoginProps> = ({setToken}) => {
                 </div>
                 <div className="input">
                     <img src="/lock.svg" alt="Informe sua senha" />
-                    <input type="password" placeholder="Informe sua senha"
+                    <input type="password" id='passwordtype' placeholder="Informe sua senha"
                         value={password} onChange={evento => setPassword(evento.target.value)} />
+                    <img src="/eye.svg" alt="senhaescondida" className="hiddenPassword" onClick={() => alert(password) } />
                 </div>
                 <button onClick={doLogin}>Login</button>
             </div>
