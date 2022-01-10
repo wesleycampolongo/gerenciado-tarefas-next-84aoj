@@ -40,6 +40,7 @@
                 border-bottom-width:1px;
                 border-color: $mediumGreyColor;
                 padding-bottom: 8px;
+                
     
                 outline: none;
     
@@ -59,9 +60,17 @@
                 &::-ms-input-placeholder{
                     color: $mediumGreyColor;
                 }
+
+                .eye {
+                    position: absolute;
+                    top: 5px;
+                    right: 10px;
+                    cursor: pointer;
+                }
             }
-            
         }
+
+        
 
     
         button {
@@ -103,9 +112,7 @@
                 .input {
                     width: 343px;
                 }
-
             }
-
         }
     }
 }
