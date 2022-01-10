@@ -8,13 +8,13 @@ type LoginProps = {
     setToken(s: string) : void
 }
 
+
 export const Login : NextPage<LoginProps> = ({setToken}) => {
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [msgError, setError] = useState('');
-    
-    
+    const [eye, showpassword] = useState('');
 
     const doLogin = async () => {
         try {
@@ -22,8 +22,9 @@ export const Login : NextPage<LoginProps> = ({setToken}) => {
                 setError('favor preencher os dados');
                 return;
             }
-
             setError('');
+
+
 
             const body = {
                 login,
@@ -63,7 +64,11 @@ export const Login : NextPage<LoginProps> = ({setToken}) => {
                     <img src="/lock.svg" alt="Informe sua senha" />
                     <input type="password" placeholder="Informe sua senha"
                         value={password} onChange={evento => setPassword(evento.target.value)} />
-                        <span className="eye"><img src="/eye.svg"></img></span>
+                    <span className="eye">
+                    <img src="/eye.svg" onClick={evento => alert("senha digitada:" + password.valueOf())}/>
+                    
+                    </span>
+                    
                 </div>
                 
                 <button onClick={doLogin}>Login</button>
